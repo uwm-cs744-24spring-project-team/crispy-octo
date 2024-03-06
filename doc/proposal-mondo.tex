@@ -8,6 +8,17 @@
 
 \usepackage{hyperref}
 \usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[TS1,T1]{fontenc}
+\usepackage{fourier, heuristica}
+\usepackage{array, booktabs}
+\usepackage{graphicx}
+\usepackage[x11names,table]{xcolor}
+\usepackage{caption}
+\DeclareCaptionFont{blue}{\color{LightSteelBlue3}}
+
+\newcommand{\foo}{\color{LightSteelBlue3}\makebox[0pt]{\textbullet}\hskip-0.5pt\vrule width 1pt\hspace{\labelsep}}
+
 
 \title{
     {
@@ -24,7 +35,7 @@
 \maketitle
 
 \section*{Introduction}
-In this project, we plan to analyze different schedulers' behavior when scheduling low priority workloads (e.g. machine learning training jobs, daily conclution data analysis jobs, etc.)  and latency-critic workloads (e.g. web servers, machine learning inference and real-time interactive data analysis jobs) together in single cluster.
+In this project, we plan to analyze different schedulers' behavior when scheduling low priority workloads (e.g. machine learning training jobs, daily conclusion data analysis jobs, etc.)  and latency-critic workloads (e.g. web servers, machine learning inference and real-time interactive data analysis jobs) together in single cluster.
 
 In previous works, most schedulers only schedule single type of workloads:
 In Mesos, each workload has its own scheduler \cite{hindman2011mesos}, and INFaaS \cite{romero2021infaas} only considers machine learning inference workloads, etc. But we might achieve better resource utilization by having a centralized scheduler to manage various types of workloads. This is especially true in the case of webservices, because they always have idle resources during the day, as we can see in \autoref{fig:typical-day}.
@@ -59,14 +70,35 @@ We plan to use Koordinator \cite{koo} as our scheduler, and compare its performa
 	\item Analysis more aspects of this topis, such as
 	      \begin{enumerate}
 		      \item Decisions made by current schedulers and their effects on cluster performance.
-		      \item The tide effect of different jobs (GPU and other resources), how can we archive a overall better resource usage while not breaking SLO requirements.
-		      \item How to give wiggle room for online jobs to handle fluctuation loads.
+		      \item The tide effect on different hardware (GPU), how can we archive a overall better resource usage while not breaking SLO requirements.
+		      \item How to distribute headroom for online jobs to handle fluctuation loads.
 	      \end{enumerate}
 	\item If time permits, we will also try to implement a new scheduler based on Kubernetes's default scheduler, and compare its performance with other schedulers.
 \end{enumerate}
 
 \section*{Timeline}
-
+See the timeline \autoref{table:timeline}.
+    
+\begin{table}[h!]
+\renewcommand\arraystretch{1.4}\arrayrulecolor{LightSteelBlue3}
+\captionsetup{singlelinecheck=false, font=blue, labelfont=sc, labelsep=quad}
+\caption{Timeline}\vskip -1.5ex
+\begin{tabular}{@{\,}r <{\hskip 2pt} !{\foo} >{\raggedright\arraybackslash}p{5cm}}
+\toprule
+\addlinespace[1.5ex]
+ Feb 26 & \bfseries{Project team start up}\\
+ March 8 - March 22 & Load simulation, workload selection, environment setup \\
+ March 23 - March 21 & \bfseries{Spring break}\\
+ April 1 - April 10 & Analysis for schedulers' performance\\
+ April 11 & \bfseries{Project check-in due} \\
+ April 12 - April 22 & Scheduler trade-offs, tide effect of different hardware, headroom \\
+ April 23 - May 1 & Winding up, finish project poster and main part of the report\\
+ May 2 & \bfseries{Project poster presentation}\\
+ May 3 - May 6 & {Finish final report}\\
+ May 7 & \bfseries{Project final report}\\
+\end{tabular}
+\label{table:timeline}
+\end{table}
 
 \section*{Related work}
 \begin{description}
@@ -76,6 +108,12 @@ We plan to use Koordinator \cite{koo} as our scheduler, and compare its performa
 	\item [\href{https://www.intel.com.br/content/dam/www/public/us/en/documents/white-papers/Intel_ByteDance_WhitePaper.pdf}{Bytedance Co-locate Practice with Intel}] Performance Evaluation and Optimization for Workload Colocation\cite{:aa}
 \end{description}
 
+\section*{Contribution}
+
+\begin{description}
+    \item[Mondo Jiang] Introduction, Methodology, Timeline.
+    \item[Zihao Zhu] TODO: remember to fill this!
+\end{description} 
 {
 \bibliographystyle{abbrv}
 \bibliography{ref}
