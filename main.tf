@@ -8,20 +8,18 @@ terraform {
 }
 
 provider "google" {
-  project = "cs744-spring24"
-  region  = "us-central1-c"
+  project = var.project
+  region  = var.region
 }
 
 # resource "google_compute_network" "vpc_network" {
 #   name = "terraform-network"
 # }
 
-resource "google_container_cluster" "default" {
-  name               = "gke-standard-zonal-single-zone"
-  location           = "us-central1-c"
-  initial_node_count = 1
+resource "google_container_cluster" "primary" {
+  name                     = "primary-zonal"
+  location                 = var.zone
+  remove_default_node_pool = true
 
-  # Set `deletion_protection` to `true` will ensure that one cannot
-  # accidentally delete this instance by use of Terraform.
-  deletion_protection = false
+  initial_node_count = 1
 }
