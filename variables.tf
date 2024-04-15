@@ -13,3 +13,11 @@ variable "zone" {
 variable "k8s_version" {
   default = "1.28"
 }
+
+variable "machine_type" {
+  default = "e2-micro"
+}
+
+variable "node_count" {
+  default = 1
+}

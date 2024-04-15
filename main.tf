@@ -84,12 +84,12 @@ resource "google_container_node_pool" "primary_nodes" {
   name       = "primary-pool"
   cluster    = google_container_cluster.primary.name
   location   = var.zone
-  node_count = 1
+  node_count = var.node_count
   # deletion_protection = false
 
   node_config {
     preemptible  = true
-    machine_type = "e2-micro"
+    machine_type = var.machine_type
     disk_size_gb = 20
 
     service_account = google_service_account.default.email
