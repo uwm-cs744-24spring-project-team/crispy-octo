@@ -33,6 +33,7 @@ resource "google_container_cluster" "primary" {
   initial_node_count       = 1
   network                  = "projects/cs744-spring24/global/networks/default"
   subnetwork               = "projects/cs744-spring24/regions/us-central1/subnetworks/default"
+  min_master_version       = var.k8s_version
 
   release_channel {
     channel = "REGULAR"
@@ -79,6 +80,7 @@ resource "google_container_cluster" "primary" {
 }
 
 resource "google_container_node_pool" "primary_nodes" {
+  version    = var.k8s_version
   name       = "primary-pool"
   cluster    = google_container_cluster.primary.name
   location   = var.zone

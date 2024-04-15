@@ -9,3 +9,7 @@ variable "region" {
 variable "zone" {
   default = "us-central1-c"
 }
+
+variable "k8s_version" {
+  default = "1.28"
+}
