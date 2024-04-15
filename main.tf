@@ -17,6 +17,15 @@ resource "google_service_account" "default" {
   display_name = "Default Service Account"
 }
 
+resource "google_service_account_iam_binding" "default_iam_binding" {
+  service_account_id = google_service_account.default.name
+  role               = "roles/editor"
+
+  members = [
+    "serviceAccount:${google_service_account.default.email}",
+  ]
+}
+
 resource "google_container_cluster" "primary" {
   name                     = "primary-zonal"
   location                 = var.zone
@@ -72,6 +81,7 @@ resource "google_container_cluster" "primary" {
 resource "google_container_node_pool" "primary_nodes" {
   name       = "primary-pool"
   cluster    = google_container_cluster.primary.name
+  location   = var.zone
   node_count = 1
   # deletion_protection = false
 
