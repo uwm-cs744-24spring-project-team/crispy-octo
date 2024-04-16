@@ -9,4 +9,9 @@ resource "helm_release" "koordinator" {
   repository = "https://koordinator-sh.github.io/charts/"
   chart      = "koordinator"
   version    = "1.4.1"
+
+  set {
+    name  = "manager.replicas"
+    value = 1
+  }
 }
