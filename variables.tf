@@ -15,9 +15,9 @@ variable "k8s_version" {
 }
 
 variable "machine_type" {
-  default = "e2-micro"
+  default = "e2-medium"
 }
 
 variable "node_count" {
-  default = 1
+  default = 2
 }
