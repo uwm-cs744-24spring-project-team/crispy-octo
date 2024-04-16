@@ -44,7 +44,7 @@ resource "google_container_cluster" "primary" {
   }
 
   network_policy {
-    enabled = true
+    enabled = false
   }
   binary_authorization {
     evaluation_mode = "DISABLED"
@@ -56,7 +56,7 @@ resource "google_container_cluster" "primary" {
   monitoring_config {
     enable_components = ["SYSTEM_COMPONENTS"]
     managed_prometheus {
-      enabled = true
+      enabled = false
     }
   }
   logging_config {
@@ -65,7 +65,7 @@ resource "google_container_cluster" "primary" {
 
   addons_config {
     http_load_balancing {
-      disabled = false
+      disabled = true
     }
 
     horizontal_pod_autoscaling {
@@ -73,7 +73,7 @@ resource "google_container_cluster" "primary" {
     }
 
     network_policy_config {
-      disabled = false
+      disabled = true
     }
 
   }
@@ -108,7 +108,7 @@ resource "google_container_node_pool" "primary_nodes" {
       "https://www.googleapis.com/auth/trace.append"
     ]
     shielded_instance_config {
-      enable_integrity_monitoring = true
+      enable_integrity_monitoring = false
     }
   }
 
