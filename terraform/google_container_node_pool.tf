@@ -9,7 +9,7 @@ resource "google_container_node_pool" "primary_nodes" {
   node_config {
     preemptible  = true
     machine_type = var.machine_type
-    disk_size_gb = 20
+    disk_size_gb = var.disk_size_gb
 
     service_account = google_service_account.default.email
     image_type      = "COS_CONTAINERD"

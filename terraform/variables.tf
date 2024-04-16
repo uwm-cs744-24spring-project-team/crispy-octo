@@ -21,3 +21,7 @@ variable "machine_type" {
 variable "node_count" {
   default = 1
 }
+
+variable "disk_size_gb" {
+  default = 30
+}
