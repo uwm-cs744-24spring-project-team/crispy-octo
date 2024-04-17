@@ -24,11 +24,8 @@ resource "google_service_account" "default" {
   display_name = "Default Service Account"
 }
 
-resource "google_project_iam_binding" "default_iam_binding" {
+resource "google_project_iam_member" "default_iam_binding" {
   project = var.project
   role    = "roles/editor"
-
-  members = [
-    "serviceAccount:${google_service_account.default.email}",
-  ]
+  member  = "serviceAccount:${google_service_account.default.email}"
 }
