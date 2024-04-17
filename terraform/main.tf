@@ -25,3 +25,28 @@ resource "google_service_account_iam_binding" "default_iam_binding" {
     "serviceAccount:${google_service_account.default.email}",
   ]
 }
+
+resource "google_service_account_iam_binding" "default_iam_binding" {
+  service_account_id = google_service_account.default.name
+  role               = "roles/logging.logWriter"
+
+  members = [
+    "serviceAccount:${google_service_account.default.email}",
+  ]
+}
+resource "google_service_account_iam_binding" "default_iam_binding" {
+  service_account_id = google_service_account.default.name
+  role               = "roles/monitoring.metricWriter"
+
+  members = [
+    "serviceAccount:${google_service_account.default.email}",
+  ]
+}
+resource "google_service_account_iam_binding" "default_iam_binding" {
+  service_account_id = google_service_account.default.name
+  role               = "roles/stackdriver.resourceMetadata.writer"
+
+  members = [
+    "serviceAccount:${google_service_account.default.email}",
+  ]
+}
