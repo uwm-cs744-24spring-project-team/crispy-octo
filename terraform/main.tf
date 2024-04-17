@@ -12,6 +12,13 @@ provider "google" {
   region  = var.region
 }
 
+provider "helm" {
+  kubernetes {
+    config_path = "~/.kube/config"
+  }
+}
+
+
 resource "google_service_account" "default" {
   account_id   = "default-service-account"
   display_name = "Default Service Account"
