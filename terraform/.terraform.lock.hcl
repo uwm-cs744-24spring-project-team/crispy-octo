@@ -26,6 +26,7 @@ provider "registry.terraform.io/hashicorp/helm" {
   version = "2.13.1"
   hashes = [
     "h1:iSUH0vCxryUGemSmDPPcOKYkHKOS+Cpbt5DfrfomBh0=",
+    "h1:ucfOk3XxaOkarUDRyRH5vU5uL8mehvUxt1mHmSyWK1Q=",
     "zh:1bf0ae1ecfd2a5d5a57f695a33b2328ef197138f27ff372fed820c975eac9783",
     "zh:4676295e3a929848b98869d3040f54f17fbed3d133342b6a1f7b72d5797239e0",
     "zh:4bf3705e061e28d16a525aad9229fdd842cdc96f7c23d040d3148957ba3149d8",
