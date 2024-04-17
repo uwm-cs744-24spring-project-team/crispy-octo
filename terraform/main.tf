@@ -17,34 +17,9 @@ resource "google_service_account" "default" {
   display_name = "Default Service Account"
 }
 
-resource "google_service_account_iam_binding" "default_iam_binding" {
-  service_account_id = google_service_account.default.name
-  role               = "roles/editor"
-
-  members = [
-    "serviceAccount:${google_service_account.default.email}",
-  ]
-}
-
-resource "google_service_account_iam_binding" "default_iam_binding" {
-  service_account_id = google_service_account.default.name
-  role               = "roles/logging.logWriter"
-
-  members = [
-    "serviceAccount:${google_service_account.default.email}",
-  ]
-}
-resource "google_service_account_iam_binding" "default_iam_binding" {
-  service_account_id = google_service_account.default.name
-  role               = "roles/monitoring.metricWriter"
-
-  members = [
-    "serviceAccount:${google_service_account.default.email}",
-  ]
-}
-resource "google_service_account_iam_binding" "default_iam_binding" {
-  service_account_id = google_service_account.default.name
-  role               = "roles/stackdriver.resourceMetadata.writer"
+resource "google_project_iam_binding" "default_iam_binding" {
+  project = var.project
+  role    = "roles/editor"
 
   members = [
     "serviceAccount:${google_service_account.default.email}",
