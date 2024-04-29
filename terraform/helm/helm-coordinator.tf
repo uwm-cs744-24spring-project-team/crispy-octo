@@ -3,7 +3,11 @@ resource "helm_release" "koordinator" {
   repository = "https://koordinator-sh.github.io/charts/"
   chart      = "koordinator"
   version    = "1.4.1"
-  namespace  = "default"
+
+  set {
+    name = "installation.namespace"
+    value = "default"
+  }
 
   # set {
   #   name  = "manager.replicas"

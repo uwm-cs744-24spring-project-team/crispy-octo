@@ -4,6 +4,8 @@ tf_apply:
 tf_apply_helm:
 	gcloud container clusters get-credentials primary-zonal --region us-central1-c
 	cd terraform/helm && terraform init && terraform apply -auto-approve
+tf_destroy_helm:
+	cd terraform/helm && terraform destroy -auto-approve
 
 tf_destroy:
 	cd terraform && terraform destroy -auto-approve
