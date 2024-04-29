@@ -4,10 +4,10 @@ resource "helm_release" "koordinator" {
   chart      = "koordinator"
   version    = "1.4.1"
 
-  set {
-    name = "installation.namespace"
-    value = "default"
-  }
+  # set {
+  #   name  = "installation.namespace"
+  #   value = "koordinator-system"
+  # }
 
   # set {
   #   name  = "manager.replicas"
