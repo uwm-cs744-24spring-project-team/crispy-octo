@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: looksbusy
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: looksbusy
+  template:
+    metadata:
+      labels:
+        app: looksbusy
+    spec:
+      containers:
+      - name: looksbusy
+        image: fogforest/lookbusy:latest
+        ports:
+        - containerPort: 8080
