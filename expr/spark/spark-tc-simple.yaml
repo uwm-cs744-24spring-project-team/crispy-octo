@@ -1,11 +1,10 @@
-#
-# Copyright 2017 Google LLC
+# Copyright 2022 The Koordinator Authors.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-#     https://www.apache.org/licenses/LICENSE-2.0
+# http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -16,19 +15,16 @@
 apiVersion: "sparkoperator.k8s.io/v1beta2"
 kind: SparkApplication
 metadata:
-  name: spark-pi
-  namespace: default
+  namespace: spark-demo
+  name: spark-tc-simple
 spec:
   type: Scala
   mode: cluster
-  image: "gcr.io/spark-operator/spark:v3.1.1"
-  imagePullPolicy: Always
-  mainClass: org.apache.spark.examples.SparkPi
-  mainApplicationFile: "local:///opt/spark/examples/jars/spark-examples_2.12-3.1.1.jar"
-  sparkVersion: "3.1.1"
-  sparkUIOptions:
-    serviceLabels:
-      test-label/v1: 'true'
+  image: "docker.io/koordinatorsh/spark:v3.2.1-koord-examples"
+  imagePullPolicy: IfNotPresent
+  mainClass: org.apache.spark.examples.SparkTC
+  mainApplicationFile: "local:///opt/spark/examples/jars/spark-examples_2.12-3.2.1-tc1.2.jar"
+  sparkVersion: "3.2.1"
   restartPolicy:
     type: Never
   volumes:
@@ -38,20 +34,21 @@ spec:
         type: Directory
   driver:
     cores: 1
-    coreLimit: "1200m"
-    memory: "512m"
+    coreLimit: "1"
+    memory: "3g"
     labels:
-      version: 3.1.1
-    serviceAccount: spark-operator
+      version: 3.2.1
+    serviceAccount: spark
     volumeMounts:
       - name: "test-volume"
         mountPath: "/tmp"
   executor:
     cores: 1
-    instances: 1
-    memory: "512m"
+    coreLimit: "1"
+    instances: 15
+    memory: "3g"
     labels:
-      version: 3.1.1
+      version: 3.2.1
     volumeMounts:
       - name: "test-volume"
         mountPath: "/tmp"
