@@ -4,7 +4,7 @@ gke-primary-zonal-default-pool-6bb55a15-mnlz   6         9160724Ki   5915m      
 
 Usage
 NAME                                           CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%   
-gke-primary-zonal-default-pool-6bb55a15-mnlz   144m         2%     1836Mi          26%       
+gke-primary-zonal-default-pool-6bb55a15-mnlz   174m         2%     1847Mi          26%       
 
 Default Allocated
 NAME    CPU_REQUEST    MEMORY_REQUEST
@@ -17,12 +17,12 @@ NAME    CPU_REQUEST    MEMORY_REQUEST
 Pending Pods
 No resources found
 
-=== 2-tc-colocation ===
+=== 2-tc-default ===
 
 deployment.apps/application created
 sparkapplication.sparkoperator.k8s.io/spark created
 
-=== 2-tc-colocation end ===
+=== 2-tc-default end ===
 
 Allocatable
 NAME                                            CapCPU    CapMem      AllocatableCPU    AllocatableMem
@@ -30,23 +30,18 @@ gke-primary-zonal-default-pool-6bb55a15-mnlz   6         9160724Ki   5915m      
 
 Usage
 NAME                                           CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%   
-gke-primary-zonal-default-pool-6bb55a15-mnlz   140m         2%     1842Mi          26%       
+gke-primary-zonal-default-pool-6bb55a15-mnlz   836m         14%    2040Mi          29%       
 
 Default Allocated
-NAME    CPU_REQUEST    MEMORY_REQUEST
+NAME                            CPU_REQUEST    MEMORY_REQUEST
+application-8456497b6c-l92dd   3700m          200Mi
+spark-driver                   1              896Mi
 
 
 Colocation Allocated
-NAME                               CPU_REQUEST    MEMORY_REQUEST
-application-8456497b6c-v6kwg      3700m          200Mi
-spark-driver                      <none>         <none>
-sparktc-45ca538f2d7773a1-exec-1   <none>         <none>
-sparktc-45ca538f2d7773a1-exec-2   <none>         <none>
-sparktc-45ca538f2d7773a1-exec-3   <none>         <none>
-sparktc-45ca538f2d7773a1-exec-4   <none>         <none>
+NAME    CPU_REQUEST    MEMORY_REQUEST
 
 
 Pending Pods
-NAMESPACE    NAME                              READY   STATUS    RESTARTS   AGE
-colocation   sparktc-45ca538f2d7773a1-exec-3   0/1     Pending   0          21s
-colocation   sparktc-45ca538f2d7773a1-exec-4   0/1     Pending   0          21s
+NAMESPACE   NAME           READY   STATUS    RESTARTS   AGE
+default     spark-driver   0/1     Pending   0          27s
