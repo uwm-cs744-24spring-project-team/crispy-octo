@@ -21,17 +21,32 @@ login:
 	gcloud auth application-default login && gcloud container clusters get-credentials primary-zonal --region=us-central1-c
 
 node_print_usage:
-	@kubectl get nodes -o jsonpath='{range .items[*]}{"Capacity"}{"\t"}{.metadata.name}{"\t"}{.status.capacity.cpu}{"\t"}{.status.capacity.memory}{"\n"}{"Allocatable"}{"\t"}{.metadata.name}{"\t"}{.status.allocatable.cpu}{"\t"}{.status.allocatable.memory}{"\n"}{end}'
-	@echo "Usage" && kubectl top nodes
+	@echo Allocatable
+	@kubectl get nodes -o custom-columns='NAME:{.metadata.name}, CapCPU:.status.capacity.cpu, CapMem:.status.capacity.memory, AllocatableCPU:.status.allocatable.cpu, AllocatableMem:.status.allocatable.memory'
+	@echo
+	@echo Usage
+	@kubectl top nodes
+ns_print_allocated:
+	@echo
+	@echo Default Allocated
+	@kubectl get pods -o custom-columns='NAME:.metadata.name, CPU_REQUEST:.spec.containers[*].resources.requests.cpu, MEMORY_REQUEST:.spec.containers[*].resources.requests.memory'
+	@echo
+ns_ko_print_allocated:
+	@echo
+	@echo Colocation Allocated
+	@kubectl get pods -n colocation -o custom-columns='NAME:.metadata.name, CPU_REQUEST:.spec.containers[*].resources.requests.cpu, MEMORY_REQUEST:.spec.containers[*].resources.requests.memory'
+	@echo
+
+
 
 expr_1:
 	@make _expr_1 > output/expr_1.txt
-_expr_1: node_print_usage
+_expr_1: node_print_usage ns_print_allocated
 	@echo
 	@echo === expr_1 ===
 	@echo
 
-	
+	@cd ./expr/1-base/; pwd
 
 	@echo
 	@echo === expr_1 end ===
