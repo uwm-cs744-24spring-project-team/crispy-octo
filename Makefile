@@ -47,7 +47,7 @@ top: node_print_usage ns_print_allocated ns_ko_print_allocated node_pending
 
 expr:
 	@mkdir -p output/$(NAME)
-	@make _expr NAME=$(NAME) > output/$(NAME)/std.txt
+	@make _expr NAME=$(NAME) > output/$(NAME)/std.txt 2>&1
 _expr: top
 	@echo
 	@echo === $(NAME) ===

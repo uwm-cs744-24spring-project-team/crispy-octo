@@ -4,25 +4,26 @@ gke-primary-zonal-default-pool-6bb55a15-mnlz   6         9160724Ki   5915m      
 
 Usage
 NAME                                           CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%   
-gke-primary-zonal-default-pool-6bb55a15-mnlz   2154m        36%    1828Mi          26%       
+gke-primary-zonal-default-pool-6bb55a15-mnlz   2222m        37%    2018Mi          29%       
 
 Default Allocated
 NAME    CPU_REQUEST    MEMORY_REQUEST
 
 
 Colocation Allocated
-NAME    CPU_REQUEST    MEMORY_REQUEST
+NAME                            CPU_REQUEST    MEMORY_REQUEST
+application-8486dc64bd-dgbc9   3700m          200Mi
+spark-driver                   <none>         <none>
 
 
 Pending Pods
-No resources found
 
-=== 1-base-default ===
+=== 1-base-colocation ===
 
-deployment.apps/application created
-sparkapplication.sparkoperator.k8s.io/spark created
+deployment.apps/application unchanged
+sparkapplication.sparkoperator.k8s.io/spark unchanged
 
-=== 1-base-default end ===
+=== 1-base-colocation end ===
 
 Allocatable
 NAME                                            CapCPU    CapMem      AllocatableCPU    AllocatableMem
@@ -30,18 +31,16 @@ gke-primary-zonal-default-pool-6bb55a15-mnlz   6         9160724Ki   5915m      
 
 Usage
 NAME                                           CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%   
-gke-primary-zonal-default-pool-6bb55a15-mnlz   1724m        29%    2104Mi          30%       
+gke-primary-zonal-default-pool-6bb55a15-mnlz   2206m        37%    2025Mi          29%       
 
 Default Allocated
-NAME                            CPU_REQUEST    MEMORY_REQUEST
-application-8486dc64bd-b6xh6   3700m          200Mi
-spark-driver                   1              896Mi
-
-
-Colocation Allocated
 NAME    CPU_REQUEST    MEMORY_REQUEST
 
 
+Colocation Allocated
+NAME                            CPU_REQUEST    MEMORY_REQUEST
+application-8486dc64bd-dgbc9   3700m          200Mi
+spark-driver                   <none>         <none>
+
+
 Pending Pods
-NAMESPACE   NAME           READY   STATUS    RESTARTS   AGE
-default     spark-driver   0/1     Pending   0          26s

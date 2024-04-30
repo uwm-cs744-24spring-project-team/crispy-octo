@@ -31,7 +31,7 @@ spec:
       koordinator.sh/enable-colocation: "true"
   selector:
     matchLabels:
-      workload.type: "app"
+      app: application
   qosClass: LS
   priorityClassName: koord-prod
   koordinatorPriority: 2000
