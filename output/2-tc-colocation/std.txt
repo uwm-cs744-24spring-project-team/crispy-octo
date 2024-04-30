@@ -1,0 +1,49 @@
+Allocatable
+NAME                                            CapCPU    CapMem      AllocatableCPU    AllocatableMem
+gke-primary-zonal-default-pool-6bb55a15-mnlz   6         9160724Ki   5915m             7091220Ki
+
+Usage
+NAME                                           CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%   
+gke-primary-zonal-default-pool-6bb55a15-mnlz   501m         8%     1910Mi          27%       
+
+Default Allocated
+NAME    CPU_REQUEST    MEMORY_REQUEST
+
+
+Colocation Allocated
+NAME    CPU_REQUEST    MEMORY_REQUEST
+
+
+Pending Pods
+No resources found
+
+=== 2-tc-colocation ===
+
+deployment.apps/application created
+sparkapplication.sparkoperator.k8s.io/spark created
+
+=== 2-tc-colocation end ===
+
+Allocatable
+NAME                                            CapCPU    CapMem      AllocatableCPU    AllocatableMem
+gke-primary-zonal-default-pool-6bb55a15-mnlz   6         9160724Ki   5915m             7091220Ki
+
+Usage
+NAME                                           CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%   
+gke-primary-zonal-default-pool-6bb55a15-mnlz   1130m        19%    2480Mi          35%       
+
+Default Allocated
+NAME    CPU_REQUEST    MEMORY_REQUEST
+
+
+Colocation Allocated
+NAME                               CPU_REQUEST    MEMORY_REQUEST
+application-559cb5677d-mvbvb      3700m          200Mi
+spark-driver                      <none>         <none>
+sparktc-539c2f8f2d3ffc63-exec-1   <none>         <none>
+sparktc-539c2f8f2d3ffc63-exec-2   <none>         <none>
+
+
+Pending Pods
+NAMESPACE    NAME                              READY   STATUS    RESTARTS   AGE
+colocation   sparktc-539c2f8f2d3ffc63-exec-2   0/1     Pending   0          21s

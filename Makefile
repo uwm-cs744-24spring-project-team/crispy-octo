@@ -63,3 +63,11 @@ _expr: top
 
 expr_stop:
 	@cd ./expr/$(NAME)/; ./stop.sh
+
+pf_col:
+	kubectl port-forward svc/spark-ui-svc 4040:4040 -n colocation
+pf_def:
+	kubectl port-forward svc/spark-ui-svg 4040:4040 
+
+remove_taint:
+	kubectl taint nodes --all node.kubernetes.io/disk-pressure:NoSchedule-

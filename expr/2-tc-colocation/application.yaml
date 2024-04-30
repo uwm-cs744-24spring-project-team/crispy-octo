@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: application
+  namespace: colocation
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: application
+  template:
+    metadata:
+      labels:
+        app: application
+    spec:
+      containers:
+      - name: lookbusy
+        image: fogforest/lookbusy:latest
+        env:
+        - name: CPU_UTIL
+          value: "10"
+        - name: CPU_CORE
+          value: "6"
+        - name: MEM_UTIL
+          value: "2"
+        - name: SPEEDTEST_INTERVAL
+          value: "120"
+        resources:
+          limits:
+            cpu: 3700m
+            memory: 200Mi
+          requests:
+            cpu: 3700m
+            memory: 200Mi
+      restartPolicy: Always
