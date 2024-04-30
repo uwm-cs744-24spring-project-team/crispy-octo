@@ -11,7 +11,7 @@ variable "zone" {
 }
 
 variable "k8s_version" {
-  default = "1.28"
+  default = "1.28.8"
 }
 
 variable "machine_type" {
