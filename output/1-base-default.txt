@@ -4,7 +4,7 @@ gke-primary-zonal-default-pool-6bb55a15-mnlz   6         9160724Ki   5915m      
 
 Usage
 NAME                                           CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%   
-gke-primary-zonal-default-pool-6bb55a15-mnlz   136m         2%     1505Mi          21%       
+gke-primary-zonal-default-pool-6bb55a15-mnlz   145m         2%     1513Mi          21%       
 
 Default Allocated
 NAME    CPU_REQUEST    MEMORY_REQUEST
@@ -12,7 +12,7 @@ NAME    CPU_REQUEST    MEMORY_REQUEST
 
 === 1-base-default ===
 
-/Users/mondo/Workspace/UW-Madison/CS744/project/expr/1-base-default
+Hello, World!
 
 === 1-base-default end ===
 
@@ -22,4 +22,4 @@ gke-primary-zonal-default-pool-6bb55a15-mnlz   6         9160724Ki   5915m      
 
 Usage
 NAME                                           CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%   
-gke-primary-zonal-default-pool-6bb55a15-mnlz   136m         2%     1505Mi          21%       
+gke-primary-zonal-default-pool-6bb55a15-mnlz   145m         2%     1513Mi          21%       

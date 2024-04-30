@@ -41,16 +41,18 @@ ns_ko_print_allocated:
 .phony: expr _expr
 
 expr:
-	@make _expr $(NAME) > output/$(NAME).txt
+	@make _expr NAME=$(NAME) > output/$(NAME).txt
 _expr: node_print_usage ns_print_allocated
 	@echo
 	@echo === $(NAME) ===
 	@echo
 
-	@cd ./expr/$(NAME)/; pwd
+	@cd ./expr/$(NAME)/; ./start.sh
 
 	@echo
 	@echo === $(NAME) end ===
 	@echo
 	@make node_print_usage
 
+expr_stop:
+	@cd ./expr/$(NAME)/; ./stop.sh
