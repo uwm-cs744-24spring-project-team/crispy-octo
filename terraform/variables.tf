@@ -15,7 +15,7 @@ variable "k8s_version" {
 }
 
 variable "machine_type" {
-  default = "e2-custom-6-4096"
+  default = "e2-custom-6-9216"
 }
 
 variable "node_count" {
