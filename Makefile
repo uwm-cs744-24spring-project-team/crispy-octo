@@ -38,18 +38,19 @@ ns_ko_print_allocated:
 	@echo
 
 
+.phony: expr _expr
 
-expr_1:
-	@make _expr_1 > output/expr_1.txt
-_expr_1: node_print_usage ns_print_allocated
+expr:
+	@make _expr $(NAME) > output/$(NAME).txt
+_expr: node_print_usage ns_print_allocated
 	@echo
-	@echo === expr_1 ===
+	@echo === $(NAME) ===
 	@echo
 
-	@cd ./expr/1-base/; pwd
+	@cd ./expr/$(NAME)/; pwd
 
 	@echo
-	@echo === expr_1 end ===
+	@echo === $(NAME) end ===
 	@echo
 	@make node_print_usage
 

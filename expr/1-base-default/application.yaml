@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: looksbusy
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: looksbusy
+  template:
+    metadata:
+      labels:
+        app: looksbusy
+    spec:
+      containers:
+      - name: looksbusy
+        image: fogforest/lookbusy:latest
+        env:
+        - name: CPU_UTIL
+          value: "90"
+        - name: CPU_CORE
+          value: "6"
+        - name: MEM_UTIL
+          value: "2"
+        - name: SPEEDTEST_INTERVAL
+          value: "120"
+        ports:
+        - containerPort: 8080
+        resources:
+          limits:
+            cpu: 4
+            memory: 800Mi
+          requests:
+            cpu: 2
+            memory: 100Mi
+      restartPolicy: Always
