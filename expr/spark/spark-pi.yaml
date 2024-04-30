@@ -15,7 +15,7 @@
 apiVersion: "sparkoperator.k8s.io/v1beta2"
 kind: SparkApplication
 metadata:
-  namespace: spark-demo
+  namespace: default
   name: spark-pi
 spec:
   type: Scala
@@ -35,10 +35,10 @@ spec:
   driver:
     cores: 1
     coreLimit: "1"
-    memory: "512m"
+    memory: "50m"
     labels:
       version: 3.2.1
-    serviceAccount: spark
+    serviceAccount: spark-operator
     volumeMounts:
       - name: "test-volume"
         mountPath: "/tmp"
@@ -46,7 +46,7 @@ spec:
     cores: 1
     coreLimit: "1"
     instances: 1
-    memory: "512m"
+    memory: "50m"
     labels:
       version: 3.2.1
     volumeMounts:
