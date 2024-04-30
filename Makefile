@@ -14,6 +14,8 @@ tf_destroy_helm:
 tf_apply_k8s:
 	kubectl apply -f k8s/koordinator-ns.yaml
 	kubectl apply -f k8s/spark-operator-role-binding.yaml
+tf_delete_k8s:
+	kubectl delete -f k8s/koordinator-ns.yaml || kubectl delete -f k8s/spark-operator-role-binding.yaml
 
 login:
 	gcloud auth application-default login && gcloud container clusters get-credentials primary-zonal --region=us-central1-c

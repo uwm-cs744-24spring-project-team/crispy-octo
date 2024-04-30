@@ -36,29 +36,29 @@ spec:
   priorityClassName: koord-prod
   koordinatorPriority: 2000
   schedulerName: koord-scheduler
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: slo-controller-config
-  namespace: koordinator-system
-data:
-  # colocation-config is the configuration for colocation.
-  # Related features: Dynamic resource over-commitment, Load-aware scheduling, Load-aware descheduling.
-  # - enable: whether to enable the colocation. If false, the reclaimed resources of the node allocatable (e.g. `kubernetes.io/batch-cpu`) will be removed.
-  # - metricAggregateDurationSeconds: the aggregated duration of node metrics reporting.
-  # - metricReportIntervalSeconds: the reporting interval of the node metrics.
-  # - metricAggregatePolicy: policies of reporting node metrics in different durations.
-  # - cpuReclaimThresholdPercent: the reclaim threshold for calculating the reclaimed cpu resource. Basically, the reclaimed resource cannot reclaim the unused resources which are exceeding the threshold.
-  # - memoryReclaimThresholdPercent: the reclaim threshold for calculating the reclaimed memory resource. Basically, the reclaimed resource cannot reclaim the unused resources which are exceeding the threshold.
-  # - memoryCalculatePolicy: the policy for calculating the reclaimable memory resource. If set to `request`, only unallocated memory resource of high-priority pods are reclaimable, and no allocated memory can be reclaimed.
-  # - degradeTimeMinutes: the threshold duration to degrade the colocation for which the node metrics has not been updated.
-  # - updateTimeThresholdSeconds: the threshold duration to force updating the reclaimed resources with the latest calculated result.
-  # - resourceDiffThreshold: the threshold to update the reclaimed resources than which the calculated reclaimed resources is different from the current.
-  # - nodeConfigs: the node-level configurations which matches the nodes via the node selector and overrides the cluster configuration.
-  colocation-config: |
-    {
-      "enable": true,
-      "cpuReclaimThresholdPercent": 100,
-      "memoryReclaimThresholdPercent": 100,
-    }
+# ---
+# apiVersion: v1
+# kind: ConfigMap
+# metadata:
+#   name: slo-controller-config
+#   namespace: koordinator-system
+# data:
+#   # colocation-config is the configuration for colocation.
+#   # Related features: Dynamic resource over-commitment, Load-aware scheduling, Load-aware descheduling.
+#   # - enable: whether to enable the colocation. If false, the reclaimed resources of the node allocatable (e.g. `kubernetes.io/batch-cpu`) will be removed.
+#   # - metricAggregateDurationSeconds: the aggregated duration of node metrics reporting.
+#   # - metricReportIntervalSeconds: the reporting interval of the node metrics.
+#   # - metricAggregatePolicy: policies of reporting node metrics in different durations.
+#   # - cpuReclaimThresholdPercent: the reclaim threshold for calculating the reclaimed cpu resource. Basically, the reclaimed resource cannot reclaim the unused resources which are exceeding the threshold.
+#   # - memoryReclaimThresholdPercent: the reclaim threshold for calculating the reclaimed memory resource. Basically, the reclaimed resource cannot reclaim the unused resources which are exceeding the threshold.
+#   # - memoryCalculatePolicy: the policy for calculating the reclaimable memory resource. If set to `request`, only unallocated memory resource of high-priority pods are reclaimable, and no allocated memory can be reclaimed.
+#   # - degradeTimeMinutes: the threshold duration to degrade the colocation for which the node metrics has not been updated.
+#   # - updateTimeThresholdSeconds: the threshold duration to force updating the reclaimed resources with the latest calculated result.
+#   # - resourceDiffThreshold: the threshold to update the reclaimed resources than which the calculated reclaimed resources is different from the current.
+#   # - nodeConfigs: the node-level configurations which matches the nodes via the node selector and overrides the cluster configuration.
+#   colocation-config: |
+#     {
+#       "enable": true,
+#       "cpuReclaimThresholdPercent": 100,
+#       "memoryReclaimThresholdPercent": 100,
+#     }
