@@ -35,22 +35,25 @@ ns_ko_print_allocated:
 	@kubectl get pods -n colocation -o custom-columns='NAME:.metadata.name, CPU_REQUEST:.spec.containers[*].resources.requests.cpu, MEMORY_REQUEST:.spec.containers[*].resources.requests.memory'
 	@echo
 
+top: node_print_usage ns_print_allocated ns_ko_print_allocated
 
 .phony: expr _expr
 
 expr:
-	@make _expr NAME=$(NAME) > output/$(NAME).txt
-_expr: node_print_usage ns_print_allocated
+	@mkdir -p output/$(NAME)
+	@make _expr NAME=$(NAME) > output/$(NAME)/std.txt
+_expr: top
 	@echo
 	@echo === $(NAME) ===
 	@echo
 
 	@cd ./expr/$(NAME)/; ./start.sh
+	@sleep 30
 
 	@echo
 	@echo === $(NAME) end ===
 	@echo
-	@make node_print_usage
+	@make top
 
 expr_stop:
 	@cd ./expr/$(NAME)/; ./stop.sh

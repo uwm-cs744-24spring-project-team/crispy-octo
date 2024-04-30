@@ -1,0 +1,19 @@
+Allocatable
+NAME                                            CapCPU    CapMem      AllocatableCPU    AllocatableMem
+gke-primary-zonal-default-pool-6bb55a15-mnlz   6         9160724Ki   5915m             7091220Ki
+
+Usage
+NAME                                           CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%   
+gke-primary-zonal-default-pool-6bb55a15-mnlz   164m         2%     1698Mi          24%       
+
+Default Allocated
+NAME    CPU_REQUEST    MEMORY_REQUEST
+
+
+Colocation Allocated
+NAME    CPU_REQUEST    MEMORY_REQUEST
+
+
+=== 1-base-default ===
+
+deployment.apps/application created

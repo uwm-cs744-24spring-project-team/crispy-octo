@@ -1,2 +1,4 @@
 #!/usr/bin/env bash
-echo "Hello, World!"
+kubectl apply -f ./application.yaml
+sleep 20
+kubectl apply -f ./spark.yaml
