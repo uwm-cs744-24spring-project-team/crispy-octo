@@ -1,0 +1,16 @@
+Capacity	gke-primary-zonal-default-pool-6bb55a15-mnlz	6	9160724Ki
+Allocatable	gke-primary-zonal-default-pool-6bb55a15-mnlz	5915m	7091220Ki
+Usage
+NAME                                           CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%   
+gke-primary-zonal-default-pool-6bb55a15-mnlz   151m         2%     1491Mi          21%       
+
+=== expr_1 ===
+
+
+=== expr_1 end ===
+
+Capacity	gke-primary-zonal-default-pool-6bb55a15-mnlz	6	9160724Ki
+Allocatable	gke-primary-zonal-default-pool-6bb55a15-mnlz	5915m	7091220Ki
+Usage
+NAME                                           CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%   
+gke-primary-zonal-default-pool-6bb55a15-mnlz   151m         2%     1491Mi          21%       

@@ -25,4 +25,16 @@ node_print_usage:
 	@echo "Usage" && kubectl top nodes
 
 expr_1:
+	@make _expr_1 > output/expr_1.txt
+_expr_1: node_print_usage
+	@echo
+	@echo === expr_1 ===
+	@echo
+
+	
+
+	@echo
+	@echo === expr_1 end ===
+	@echo
+	@make node_print_usage
 
