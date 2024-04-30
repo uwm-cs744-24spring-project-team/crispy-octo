@@ -35,7 +35,13 @@ ns_ko_print_allocated:
 	@kubectl get pods -n colocation -o custom-columns='NAME:.metadata.name, CPU_REQUEST:.spec.containers[*].resources.requests.cpu, MEMORY_REQUEST:.spec.containers[*].resources.requests.memory'
 	@echo
 
-top: node_print_usage ns_print_allocated ns_ko_print_allocated
+node_pending:
+	@echo 
+	@echo Pending Pods
+	@kubectl get pods --all-namespaces --field-selector=status.phase==Pending
+
+
+top: node_print_usage ns_print_allocated ns_ko_print_allocated node_pending
 
 .phony: expr _expr
 

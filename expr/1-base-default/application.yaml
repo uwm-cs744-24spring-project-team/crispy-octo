@@ -17,7 +17,7 @@ spec:
         image: fogforest/lookbusy:latest
         env:
         - name: CPU_UTIL
-          value: "70"
+          value: "35"
         - name: CPU_CORE
           value: "6"
         - name: MEM_UTIL
