@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: colocation
+  labels:
+    koordinator.sh/enable-colocation: "true"
+---
+apiVersion: config.koordinator.sh/v1alpha1
+kind: ClusterColocationProfile
+metadata:
+  name: koordinator-colocation-spark
+spec:
+  namespaceSelector:
+    matchLabels:
+      koordinator.sh/enable-colocation: "true"
+  selector:
+    matchLabels:
+      sparkoperator.k8s.io/launched-by-spark-operator: "true"
+  qosClass: BE
+  priorityClassName: koord-batch
+  koordinatorPriority: 1000
+  schedulerName: koord-scheduler
+---
+apiVersion: config.koordinator.sh/v1alpha1
+kind: ClusterColocationProfile
+metadata:
+  name: koordinator-colocation
+spec:
+  namespaceSelector:
+    matchLabels:
+      koordinator.sh/enable-colocation: "true"
+  selector:
+    matchLabels:
+      workload.type: "app"
+  qosClass: LS
+  priorityClassName: koord-prod
+  koordinatorPriority: 2000
+  schedulerName: koord-scheduler

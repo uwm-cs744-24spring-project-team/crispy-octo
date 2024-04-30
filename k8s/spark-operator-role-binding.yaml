@@ -11,3 +11,6 @@ subjects:
   - kind: ServiceAccount
     name: spark-operator
     namespace: default
+  - kind: ServiceAccount
+    name: spark-operator
+    namespace: colocation
