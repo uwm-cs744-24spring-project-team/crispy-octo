@@ -1,0 +1,8 @@
+services:
+  looksbusy:
+    image: fogforest/lookbusy:latest
+    environment:
+      - CPU_UTIL=50
+      - CPU_CORE=1
+      - MEM_UTIL=10
+      - SPEEDTEST_INTERVAL=120

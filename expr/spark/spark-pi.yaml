@@ -35,7 +35,7 @@ spec:
   driver:
     cores: 1
     coreLimit: "1"
-    memory: "50m"
+    memory: "512m"
     labels:
       version: 3.2.1
     serviceAccount: spark-operator
@@ -46,7 +46,7 @@ spec:
     cores: 1
     coreLimit: "1"
     instances: 1
-    memory: "50m"
+    memory: "512m"
     labels:
       version: 3.2.1
     volumeMounts:
